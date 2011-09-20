@@ -27,6 +27,12 @@ class HelloWorldBDDTest extends WordSpec with ShouldMatchers {
       "complain when popped" in {
         evaluating { stack.pop() } should produce [NoSuchElementException]
       }
+
+      "do not complain when pushed" in {
+        stack.push(1)
+        stack should not be ('empty)
+        stack should have size (1)
+      }
     }
   }
 }
